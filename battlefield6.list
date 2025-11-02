@@ -1,0 +1,51 @@
+# Battlefield 6 rules (classical format)
+# 包含 DOMAIN-SUFFIX 行 + 解析到的 /32 IP + 常见 Cloudflare IPv4 网段（便于覆盖 CDN）
+
+# Domains
+DOMAIN-SUFFIX,battlefield.com
+DOMAIN-SUFFIX,ea.com
+DOMAIN-SUFFIX,origin.com
+DOMAIN-SUFFIX,eaassets.com
+DOMAIN-SUFFIX,cdn.ea.com
+DOMAIN-SUFFIX,auth.ea.com
+DOMAIN-SUFFIX,ea.playfab.com
+DOMAIN-SUFFIX,playfab.com
+DOMAIN-SUFFIX,playfabapi.com
+DOMAIN-SUFFIX,eaappdownload.com
+DOMAIN-SUFFIX,download.ea.com
+DOMAIN-SUFFIX,client-download.ea.com
+DOMAIN-SUFFIX,api.battlefield.com
+DOMAIN-SUFFIX,metrics.ea.com
+DOMAIN-SUFFIX,login.ea.com
+DOMAIN-SUFFIX,public-ea-cloud.net
+
+# Resolved A records captured via public DoH (as /32)
+IP-CIDR,3.217.99.158/32
+IP-CIDR,44.209.65.243/32
+IP-CIDR,23.47.102.139/32
+IP-CIDR,174.143.165.150/32
+IP-CIDR,3.175.207.108/32
+IP-CIDR,3.175.207.5/32
+IP-CIDR,3.175.207.15/32
+IP-CIDR,3.175.207.34/32
+
+# Common Cloudflare IPv4 ranges (officially published; included to cover CDN edges)
+IP-CIDR,103.21.244.0/22
+IP-CIDR,103.22.200.0/22
+IP-CIDR,103.31.4.0/22
+IP-CIDR,104.16.0.0/12
+IP-CIDR,108.162.192.0/18
+IP-CIDR,131.0.72.0/22
+IP-CIDR,141.101.64.0/18
+IP-CIDR,162.158.0.0/15
+IP-CIDR,172.64.0.0/13
+IP-CIDR,173.245.48.0/20
+IP-CIDR,188.114.96.0/20
+IP-CIDR,190.93.240.0/20
+IP-CIDR,197.234.240.0/22
+IP-CIDR,198.41.128.0/17
+
+# 说明：
+# - /32 行是当次解析所得的 A 记录，可能随时间变化（负载均衡、CDN、Anycast）。
+# - 如果需要更全面覆盖（Akamai/AWS 等），可额外添加对应云提供商的网段，但体积会大幅增加。
+# - 建议定期（或在 OpenClash 中设置自动更新脚本）更新此文件以保持准确性。
